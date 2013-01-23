@@ -1,0 +1,280 @@
+body{	
+	background-color: #003000;
+	color: #38B349;
+	font-family: sans-serif, Arial;
+	font-size: 16px;
+	margin: 0 auto; 	
+}
+
+footer{
+	background-color: #EAEAEA;	
+	border-radius: 0px 0px 10px 10px;
+	padding: 10px;
+	text-align: center;
+}
+
+footer div{
+	color: black;
+	display: inline-block;
+	font-size: .6em;
+	padding-left: 2em;
+	text-align: left;
+	vertical-align: middle;
+	width: 30%;
+}
+
+header{
+	background: url("../logo/logoHeader.png") no-repeat 3% 5px;
+	background-color: rgba(0,0,0,.8);			
+	left: 0;	
+	position: fixed;
+	right: 0;
+	text-align: right;
+	text-shadow: green 0px .3px 0px;
+	top: 0;
+}
+
+h1{
+	font-size: 0;
+}
+
+h2, h3, #editar_perfil, #menu_usuario, #opcionesUsuario, #contenido, #menu_vertical{
+	font-family: 'Nunito', sans-serif;
+}
+
+#contacto{
+	text-align: right;
+}
+
+#contenido{
+	color: #222;
+	text-shadow: green 0px .3px 0px;
+}
+
+#editar_perfil, #opcionesUsuario a{	
+	color: gray;
+	font-size: 1.1em;
+	padding: .5em;	
+	text-decoration: none;
+	transition: all 1s ease;
+}
+
+#editar_perfil:hover, #opcionesUsuario a:hover{	
+	color: white;
+	text-decoration: underline;
+}
+
+#menu_grande{	
+	display: inline-block;	
+	margin-bottom: -0.7em;
+	vertical-align: top;
+}
+
+#menu_chico{	
+	display: none;	
+}
+
+#menu_usuario{
+	display: inline-block;
+}
+#menu_usuario a{
+	font-size: 1.3em;	
+}
+
+#menu_usuario br { 
+	display:none; 
+}
+
+#menu_usuario li {
+    display: block;
+    font-size: 1em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;    
+}
+
+#menu_usuario li a {
+    color: gray;
+    display: block;
+    text-decoration: none;
+    padding-right: 1em;
+    /* animamos el cambio de color de los textos */
+    transition: color .2s ease-in-out;
+}
+
+#menu_usuario li:first-child a { 
+	border-left: none; 
+}
+#menu_usuario li:last-child a{
+	border-right: none; 
+}
+/* efecto hover cambia el color */
+#menu_usuario li:hover > a { 	
+	color: white; 
+}
+
+/* los submenús */
+#menu_usuario ul {
+    right: 0;
+    margin: 0;    
+    opacity: 0; /* no son visibles */
+    position: absolute;
+    top: 2.5em; /* se ubican debajo del enlace principal */    
+    /* animamos su visibildiad */
+    transition: opacity .25s ease .1s;
+}
+  
+/* son visibes al poner el cursor encima */
+#menu_usuario li:hover > ul { 
+	opacity: 1; 
+}
+
+/* cada un ode los items de los submenús */
+#menu_usuario ul li {
+    height: 0; /* no son visibles */
+    overflow: hidden;
+    padding: 0;
+    /* animamos su visibildiad */
+    transition: height .25s ease .1s;    
+}
+#menu_usuario li:hover > ul li {	
+    height: 2.3em; /* los mostramos */
+    overflow: visible;
+    padding: 0;
+}
+#menu_usuario ul li a {
+    border: none;
+    border-bottom: 1px solid #111;
+    margin: 0;
+    width: 7em;
+}
+/* el último n otiene un borde */
+#menu_usuario ul li:last-child a {
+   border: none; 
+}
+
+#menu_usuario li ul li div{
+	background: linear-gradient(#222,#555);
+	font-size: .8em;
+	height: 3em;
+	text-align: center;
+}
+
+#menu_usuario li ul li div a:hover{
+	background-color: gray;
+}
+
+#menu_vertical{
+	bottom: 0;
+	color: gray;	
+	display: none;
+	font-size: 1.4em;	
+	padding-bottom: .3em;
+	padding-left: 1em;
+	padding-top: .6em;
+	padding-right: 1em;
+	text-align: right;
+}
+
+#menu_vertical button{
+	background-color: rgba(0,0,0,0);
+	border-left: 1px solid gray;
+	border-top: 1px solid gray;
+	border-radius: 5px;
+	color: gray;
+	cursor: pointer;
+	font-size: .9em
+}
+
+#toolTipBox {
+       display: none;
+       padding: 5;
+       font-size: 12px;
+       border: black solid 1px;
+       font-family: verdana;
+       position: absolute;
+       background-color: #D5FFFC;
+       color: 000000;
+}
+
+#usuarios{	
+	font-size: .6em;
+}
+
+.item_menu{		
+	display: inline-block;
+	height: 50px;		
+	margin-top: 1.2em;
+	vertical-align: top;
+}
+
+.item_menu a{	
+	background-color: white;	
+	border-radius: 10px;	
+	color: gray;	
+	font-size: .85em;	
+	padding: .6em 1em;
+	text-align: center;	
+	text-decoration: none;
+	transition: all 1s ease;
+}
+
+.item_menu a:hover {
+	background-color: green;
+	color: white;
+	cursor: pointer;
+    font-style: italic;
+    text-decoration: none;	
+}
+
+@media screen and (max-width: 780px){
+	header{
+		background-color: #303030;
+		position: relative;
+	}
+	#contenido{
+		padding-top: 0em;
+	}
+	#menu_chico{
+		margin-top: 1em;
+	}
+	#menu_grande{
+		display: none;
+	}
+	#menu_vertical{		
+		display: inline-block;		
+	}
+	#menu_usuario{
+		font-size: .9em;
+	}
+	.item_menu{					
+		display: block;
+		font-size: .6em;
+		height: 30px;	
+		margin-top: .1em;
+		text-decoration: underline;
+		width: 100%;
+	}	
+
+	.item_menu a{
+		background-color: #303030;
+		border: 0;
+		border-radius: 0;
+		font: inherit;	
+		margin-right: .2em;
+		margin-top: 1em;
+		padding: 0;
+		transition: all .1s ease;
+	}
+
+	.item_menu:hover{
+		background-color: black;		
+	}
+
+	.item_menu a:hover{
+		background-color: black;
+		cursor: pointer;
+	}
+}
+

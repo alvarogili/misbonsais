@@ -1,0 +1,19 @@
+que falta?
+
+-permitir cambiar contraseña
+-búsqueda de bonsáis en página general
+-crear tutorial
+
+A futuro:
+-ver de agregar labores a multiples bonsáis
+
+
+Páginas que estarían terminadas:
+	*base
+	*bonsai
+	*bonsais
+	*editarBonsai
+	*error
+	*index	
+	*nuevaLabor
+	*nuevoBonsai

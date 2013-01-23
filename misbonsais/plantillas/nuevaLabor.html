@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Agregando labores a {{bonsai.common_name}}{% endblock %}
+
+{% block estilo_particular%}
+    <!-- calendario -->
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}js/jscal2.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}js/border-radius.css" />
+    <link id="skin-steel" title="Steel" type="text/css" rel="alternate stylesheet" href="{{ STATIC_URL }}js/steel/steel.css" />
+    <script src="{{ STATIC_URL }}js/jscal2.js"></script>
+    <script src="{{ STATIC_URL }}js/lang/es.js"></script>
+    <!---->
+    <link href="{{ STATIC_URL }}css/nueva_labor.css" rel="stylesheet" />   
+{% endblock %}
+
+{% block menu_chico %}
+{% block menu %}
+  <div class='item_menu'>
+    <a href="/bonsai/{{bonsai.id}}">Volver a {{bonsai.common_name}}</a>
+  </div> 
+  <div class='item_menu'>
+    <a href="/usuario/">Todos mis bonsáis</a>
+  </div>  
+{% endblock %}
+{% endblock %}
+
+{% block contenido %}  
+  <section id="contenido">
+    <br>
+    <script>
+      if (datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
+          jQuery(function($){ //on document.ready
+              $('#id_date').datepicker();
+          })
+      }
+
+      /*Guarda la nueva labor*/
+      function submitOnClick(formName){
+        document.forms[formName].submit();
+      }
+
+      /*confirma el eliminado de la labor*/
+      function borrar(getTaskTypeDisplay, date, labor_id){
+        if(confirm("Realmente desea borrar la labor \"" + getTaskTypeDisplay + "\" con fecha " + date)){
+          window.location = "/labor/borrar/"+labor_id;
+        }
+      }
+    </script>
+
+  	<section id="labores"> 
+        <h3>Agregando una nueva Labor a {{bonsai.common_name}}...</h3>
+        <form name="formulario" id="formulario" method="POST">
+          {% csrf_token %}
+          {% if error %}
+            <p style="color:red;">Los campos marcados con asterisco (*) son obligatorios</p>
+          {% endif %}
+            <p>
+              <label for="id_date">Fecha(*):</label> 
+              <br>
+              <input id="fecha" type="text" readonly />
+              <input type="hidden" name="date" id="id_date" />
+              <input id="calendar-trigger" type="button" value="..." />
+              <script type="text/javascript">
+                      Calendar.setup({
+                                     fdow: 0,   
+                                     inputField: "id_date",
+                                           trigger: "calendar-trigger", 
+                                     dateFormat: "%m/%d/%Y",
+                                     onSelect : function () {
+                                            this.hide();
+                            var date = this.selection.get();
+                            date = Calendar.intToDate(date);
+                                  date = Calendar.printDate(date, "%d/%m/%Y");
+                            document.formulario.fecha.value = date;
+                          }
+                                   });
+                     cal.fdow = 0;
+                     cal.redraw();
+              </script>
+             </p>
+            <p>
+              <label for="id_task_type">Tipo de tarea(*):</label> 
+              <br>
+              <select name="task_type" id="id_task_type">
+                <option value="" selected="selected">Seleccione una</option>
+                {% for taskID, taskName in  tasks %}
+                  <option value="{{taskID}}">{{taskName}}</option>
+                {% endfor %}                            
+              </select>
+            </p>
+            <p>
+              <label for="id_description">Descripción:</label> 
+              <br>
+              <textarea id="id_description" name="description" rows="8"></textarea>
+            </p>
+          <p>
+            <input type="hidden" name="bonsai" id="id_bonsai" value="{{bonsai.id}}" />
+          </p>
+          <div class="boton" onclick="submitOnClick('formulario')">
+            Guardar
+          </div>        
+          <a href="/bonsai/{{bonsai.id}}">
+            <div class="boton">
+              Cancelar          
+            </div>
+          </a>
+        </form>
+
+        {% if labores %}
+          <br>
+          <div id="titulo"><b>Labores previamente cargadas</b></div>
+    		  <section id="tabla_labores">  
+           <table border="1">
+            <tr id="cabecera_tabla">
+              <td class="col_cabecera_tabla_fecha">Fecha</td>
+              <td class="col_cabecera_tabla_tarea">Tarea realizada</td>
+              <td class="col_cabecera_tabla_desc">Descripción/Observaciones</td>
+              <td class="col_cabecera_tabla_elim">Borrar</td>
+            </tr>
+            {% for labor in labores %}
+               <tr class="fila_tabla">
+                 <td class="fila_tabla_fecha">{{labor.date|date:"d/m/Y"}}</td>
+                 <td class="fila_tabla_tarea">{{labor.get_task_type_display}}</td>
+                 <td class="fila_tabla_desc">{{labor.description}}</td>
+                 <td calss="fila_tabla_elim">
+                  <a href="#" onclick="borrar('{{labor.get_task_type_display}}','{{labor.date|date:"d/m/Y"}}', '{{labor.id}}');">
+                    <img src="{{ STATIC_URL }}images/cruz.png">
+                  </a>
+                 </td>
+              </tr>
+            {% endfor %}
+            </table>  			                        
+          </section> 
+          <br>
+        {% else %}        
+          <br>
+          <br>
+          <br>
+          <center>Aún no se han realizado labores sobre este bonsái.</center>
+          <br>
+          <br>
+          <br>
+        {% endif %}       
+    </section>
+  </section>
+{% endblock %}

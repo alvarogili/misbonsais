@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block titulo %}{{bonsai.common_name}}{% endblock %}
+{% block estilo_particular%}
+    <link href="{{ STATIC_URL }}css/bonsai_style.css" rel="stylesheet" />   
+{% endblock %}
+
+{% block menu_chico %}
+{% block menu %}
+  <div class='item_menu'>
+    <a href="/bonsai/editar/{{bonsai.id}}">Modificar datos</a>
+  </div>
+  <div class='item_menu'>
+    <a href="/bonsai/nuevaLabor/{{bonsai.id}}">Administrar labores</a>
+  </div> 
+  <div class='item_menu'>
+    <a href="/usuario/">Todos mis bonsáis</a>
+  </div>  
+{% endblock %}
+{% endblock %}
+
+{% block contenido %}
+  <section id="contenido">
+  	<section id="info">
+   		<article id="div_foto">
+        <figure>
+        {% if bonsai.imagePath %}
+          <img src="{{bonsai.imagePath}}" id="foto">
+        {% else %}
+          <img src="{{ STATIC_URL }}no-imagen.jpg" id="foto">
+        {% endif %}
+        </figure>
+   		</article>
+   		<article id="info_principal">
+  			<div class="texto_info_fijo">Nombre vulgar:</div> <em>{{bonsai.common_name}}</em><br>
+  			<br>  	  			
+        {% if bonsai.botanical_name %}
+          <div class="texto_info_fijo">Nombre botánico: </div> <em>{{bonsai.botanical_name}}</em><br>
+          <br>
+        {% endif %}
+        {% if bonsai.byname %}
+          <div class="texto_info_fijo">Apodo: </div><em>{{bonsai.byname}}</em><br>
+          <br> 
+        {% endif %}         	  			
+   			<div class="texto_info_fijo">Nacimiento/adquisición: </div><em>{{bonsai.birth_date|date:"d/m/Y"}}</em><br>
+  			<br>
+        <div class="texto_info_fijo">Edad: </div><em>{{age}} años</em><br>
+        <br>
+        {% if bonsai.style %}
+   			  <div class="texto_info_fijo">Estilo: </div><em>{{bonsai.style}}</em><br>
+        {% endif %}
+  		</article>
+      <article id="cont_publicidad">
+          publicidad<br><br>
+          <script type="text/javascript"><!--
+          google_ad_client = "ca-pub-7772189878652683";
+          /* mis bonsais- anuncio pag bonsais */
+          google_ad_slot = "6546162412";
+          google_ad_width = 180;
+          google_ad_height = 150;
+          //-->
+          </script>
+          <script type="text/javascript"
+          src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+          </script>
+          <br><br>
+        </article>
+      </article>
+    </section>
+    
+    <section id="labores">          
+      {% if labores %}
+  		  <section id="tabla_labores">  
+         <table border="1">
+          <tr id="cabecera_tabla">
+            <td class="col_cabecera_tabla_fecha"><strong>Fecha</strong></td>
+            <td class="col_cabecera_tabla_tarea"><strong>Tarea realizada</strong></td>
+            <td class="col_cabecera_tabla_desc"><strong>Descripción/Observaciones</strong></td>
+          </tr>
+          {% for labor in labores %}
+             <tr class="fila_tabla">
+               <td class="fila_tabla_fecha">{{labor.date|date:"d/m/Y"}}</td>
+               <td class="fila_tabla_tarea">{{labor.get_task_type_display}}</td>
+               <td class="fila_tabla_desc">{{labor.description}}</td>
+            </tr>
+          {% endfor %}
+          </table>  			                        
+        </section> 
+      {% else %}
+        <br>
+        <br>
+        <br>       
+        <center>Aún no se han realizado labores sobre este bonsái.</center>
+        <br>
+        <br>
+        <br>
+      {% endif %}       
+  	</section>        
+  </section>
+{% endblock contenido%}
+

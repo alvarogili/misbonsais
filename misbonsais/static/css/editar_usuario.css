@@ -1,0 +1,34 @@
+#contenido{
+	background-color: white;
+	box-shadow: inset 0 0 1em #38B349;
+	margin-top: 0px;
+	min-height: 500px;
+	padding-top: 3em;
+	text-align: center;
+}
+#cuerpo, #estadisticas{
+	border: 1px solid gray;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px gray;
+	display: inline-block;
+	height: 350px;
+	margin-left: 3em; 
+	margin-right: 3em;
+	vertical-align: top;
+	width: 30%;
+}
+
+@media screen and (max-width: 780px){
+
+	#contenido{
+		padding-top: 0em;
+		margin: 0;
+	}
+
+	#cuerpo, #estadisticas{
+		border-radius: 0;
+		box-shadow: 0 0 0;
+		margin: 0;
+		width: 100%;
+	}
+}

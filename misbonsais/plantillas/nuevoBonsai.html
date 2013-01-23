@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block titulo %}Agregando un bonsái{% endblock %}
+{% block estilo_particular %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}js/jscal2.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}js/border-radius.css" />
+    <link id="skin-steel" title="Steel" type="text/css" rel="alternate stylesheet" href="{{ STATIC_URL }}js/steel/steel.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/nuevo_bonsai.css" />
+    <script src="{{ STATIC_URL }}js/jscal2.js"></script>
+    <script src="{{ STATIC_URL }}js/lang/es.js"></script>
+{% endblock %}    
+
+{% block menu_chico %}
+{% block menu %}
+  <div class='item_menu'>
+  	<a href="/usuario/">Todos mis bonsáis</a>
+  </div>  
+{% endblock %}
+{% endblock %}
+
+{% block contenido %}		
+	<section id="contenido">
+		<script>
+			if (datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
+			    jQuery(function($){ //on document.ready
+			        $('#id_birth_date').datepicker();
+			    })
+			}
+    		
+    		/*guarda el bonsái*/
+    		function submitOnClick(formName){
+        		document.forms[formName].submit();
+    		}
+
+    		/*hace el preview de la imágen*/
+    		function refreshImg(){
+    			if(document.formulario.imagePath.value){
+     				document.getElementById('picture').src = document.formulario.imagePath.value;
+     			}
+   			}
+
+			//ayuda imagen
+			var theObj="";
+			function toolTip(text,me) {
+			       theObj=me;
+			       theObj.onmousemove=updatePos;
+			       document.getElementById('toolTipBox').innerHTML=text;
+			       document.getElementById('toolTipBox').style.display="block";
+			       window.onscroll=updatePos;
+			}
+			function updatePos() {
+			       var ev=arguments[0]?arguments[0]:event;
+			       var x=ev.clientX;
+			       var y=ev.clientY;
+			       diffX=24;
+			       diffY=0;
+			       document.getElementById('toolTipBox').style.top  = y-2+diffY+document.body.scrollTop+ "px";
+			       document.getElementById('toolTipBox').style.left = x-2+diffX+document.body.scrollLeft+"px";
+			       theObj.onmouseout=hideMe;
+			}
+			function hideMe() {
+			       document.getElementById('toolTipBox').style.display="none";
+			}
+		</script>
+		<h2>Agregando un nuevo Bonsái a la lista...</h2>
+		<div id="div_form">
+			<form name="formulario" id="formulario" enctype='multipart/form-data' method="post">
+				{% if error %}
+					<p style="color:red;">Los campos marcados con asterisco (*) son obligatorios</p>
+				{% endif %}
+				{% csrf_token %}
+				<p>
+					<label for="id_common_name">Nombre vulgar(*):</label> 
+					<br>
+					<input id="id_common_name" type="text" name="common_name" maxlength="100" />
+				</p>
+				<p>
+					<label for="id_botanical_name">Nombre botánico:</label> 
+					<br>
+					<input id="id_botanical_name" type="text" name="botanical_name" maxlength="100" />
+				</p>
+				<p>
+					<label for="id_imagePath">Foto:</label> 		
+					<span id="toolTipBox" width="200"></span>				
+					<a href="#">				
+						<img src="{{ STATIC_URL }}images/ayuda.gif" onmouseover="toolTip('Para agregar una imágen a un Bonsái es necesario que esta <b>esté alojada externamente a esta página</b>, por ejemplo, en un albúm de Facebook. Una vez elegida la foto, deberá obtener la <i>URL</i> de la misma. Para ello, haga click con el botón derecho del mouse sobre esta y elija la opción: <b>copiar la dirección de la imágen / Copiar URL de imágen</b> dependiendo del navegador utilizado.<br> Luego, hacer click con el botón derecho sobre el recuadro de abajo y elegir pegar, quedando así enlazada la imágen.',this)">
+					</a>
+					<br>
+					<input id="id_imagePath" type="text" name="imagePath" onChange="refreshImg()" />
+				</p>
+				<p>
+					<label for="id_byname">Apodo:</label> 
+					<br>
+					<input id="id_byname" type="text" name="byname" maxlength="100" />
+				</p>
+				<p>
+					<label for="id_birth_date">Fecha de nacimiento/adquisición(*):</label> 
+					<br>
+					<input type="hidden" name="birth_date" id="id_birth_date" />
+			        <input id="fecha" type="text" readonly />
+			        <input id="calendar-trigger" type="button" value="..." />
+					<script type="text/javascript">
+			               	Calendar.setup({
+			                               fdow: 0,		
+			                               inputField: "id_birth_date",
+                                           trigger: "calendar-trigger",	
+			                               dateFormat: "%m/%d/%Y",
+			                               onSelect : function () {
+			                               				this.hide();
+														var date = this.selection.get();
+														date = Calendar.intToDate(date);
+						            					date = Calendar.printDate(date, "%d/%m/%Y");
+														document.formulario.fecha.value = date;
+													}
+			                             });
+			               cal.fdow = 0;
+			               cal.redraw();
+			        </script>
+				</p>
+				<p>
+					<label for="id_style">Estilo:</label> 
+					<br>
+					<input id="id_style" type="text" name="style" maxlength="100" />
+				</p>
+				<p>
+					<input name="usuario" id="id_usuario" value="{{usuario.id}}" type="hidden" />	
+				</p>
+				<div id="botones">
+					<div class="boton" onclick="submitOnClick('formulario')">
+						Guardar
+					</div>				
+					<a href="/usuario/">
+						<div class="boton">
+							Cancelar
+						</div>
+					</a>	
+				</div>
+				<p>(*) Campos obligatorios</p>	
+				<br>
+			</form>
+		</div>
+		<div id="div_preview">
+			<h3>
+				Vista previa de la foto
+			</h3>		
+			<img src="{{ STATIC_URL }}no-imagen.jpg" id="picture" onload="refreshImg()"/>		
+		</div>
+		<br>
+	</section>
+{% endblock %}

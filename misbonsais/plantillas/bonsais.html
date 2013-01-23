@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block titulo %}Mis bonsáis{% endblock %}
+{% block estilo_particular %}
+	<link href="{{ STATIC_URL }}css/bonsais_style.css" rel="stylesheet" /> 
+{% endblock %}
+{% block menu_chico %}
+{% block menu %}
+	<div class='item_menu'>
+		<a href="bonsai/nuevo/">Agregar bonsái</a>
+	</div>
+	<!--<div class='item_menu'>
+		<a href="">Fichas de bonsáis</a>
+	</div>-->
+{% endblock %}
+{% endblock %}
+	<!--<div class='item_menu'>
+		<a href="bonsai/nuevo/">Agregar bonsái</a>
+	</div>-->
+
+
+{% block contenido %}
+	<section id="contenido">			
+		<br>			
+		<h2>Mis Bonsáis</h2>			
+		<br>		
+		{% for bonsai in datos %}	
+			<a href="/bonsai/{{bonsai.id}}">
+				<article class="bonsai">					
+					<div>
+						{{bonsai.common_name}}
+						<br>
+						{{bonsai.byname}}
+						<br>						
+						{% if bonsai.imagePath %}
+			           		<img src="{{bonsai.imagePath}}" class="foto">
+			           	{% else %}
+			             	<img src="{{STATIC_URL}}no-imagen.jpg" class="foto">
+			           	{% endif %}
+		           	</div>		
+				</article>				
+			</a>
+			{% if forloop.counter|divisibleby:5 %}
+				<article class="publicidad">
+					publicidad
+					<script type="text/javascript"><!--
+					google_ad_client = "ca-pub-7772189878652683";
+					/* mis bonsais- anuncio pag bonsais */
+					google_ad_slot = "6546162412";
+					google_ad_width = 180;
+					google_ad_height = 150;
+					//-->
+					</script>
+					<script type="text/javascript"
+					src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+					</script>
+				</article>
+			{% endif %}
+		{% empty %}
+			<div id="empty">
+				<br>
+				<br>
+				<h3>Bienvenido a su espacio.</h3><br>
+				<h4>Para agregar su primer Bonsái presione el botón "Agregar bonsái" en la parte superior derecha de la página.</h4>
+			</div>
+		{% endfor %}	
+		<br>
+		<br>		
+		<br>
+	</section>	
+{% endblock %}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="es">
+  <head>
+    <title>{% block titulo %}{% endblock %}</title>
+    <meta charset="utf-8"> 
+    {% block estilo_particular %}{% endblock %}    
+    <link href="{{ STATIC_URL }}css/normalize.css" rel="stylesheet" /> 
+    <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' rel='stylesheet' rel='stylesheet' type='text/css' />
+    <link href="{{ STATIC_URL }}css/general_style.css" rel="stylesheet" />
+    <link href="{{ STATIC_URL }}js/prefixfree.min.js" /> 
+    <link rel="shortcut icon" href="{{ STATIC_URL }}logo/icono.png" />
+    <meta name="description" content="Página para la gestión de los trabajos realizados a tus bonsáis">
+    <meta name="viewport" content="width=device-width,maximun-scale=1">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
+    <script src="{{ STATIC_URL }}js/base.js"></script>
+  </head>
+  <body>
+    <div id="todo">
+    	<header>
+        <h1>
+          Mis Bonsais              
+        </h1>      
+        <div id="menu_vertical">
+          <button id="boton_menu">Menú</button>
+          <div id="menu_chico">
+            {% block menu_chico %}{% endblock %}
+          </div>
+        </div>
+        <div id="menu_grande">
+            {% block menu %}{% endblock %}                 
+        </div>
+        <ul id="menu_usuario">
+            <li>
+              <a href="#">{{usuario.first_name}} {{usuario.last_name}}</a>
+              <ul>
+                <li>
+                  <div>
+                    <a href="/usuario/editar/" id="editar_perfil">Editar perfil</a>
+                  </div>
+                </li>
+                <li>
+                  <div id="opcionesUsuario">
+                    <a href="/usuario/salir/">Cerrar sesión</a>   
+                  </div>
+                </li>
+              </ul>              
+            </li>
+        </ul> 
+    	</header>         
+      {% block contenido %}{% endblock %}
+      <aside>
+         {% block aside %}{% endblock %}
+      </aside>   	
+    	<footer> 
+        <div id="usuarios">
+          <strong>Estadisticas del sitio</strong>
+          <p>
+            {{statistics.usuarios}} Usuarios registrados<br>
+            {{statistics.bonsais}} Bonsaís registrados en total<br>  
+            Último usuario: {{statistics.ultimo_registrado.first_name}} {{statistics.ultimo_registrado.last_name}}
+          </p>
+        </div>
+        <div>
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.es_CO">
+            <img alt="Licencia Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" />
+          </a>
+          <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+            Mis Bonsais
+          </span> por <a xmlns:cc="http://creativecommons.org/ns#" href="http://alvarogili.com.ar" property="cc:attributionName" rel="cc:attributionURL">Alvaro Gili</a> se encuentra bajo una
+          <br>
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.es_CO">Licencia Creative Commons Atribución-NoComercial-SinDerivadas 3.0 Unported</a>.
+          <br>
+        </div>
+        <div id="contacto">
+          Si tiene alguna duda o sugerencia no dude en <a target="_blank" href="http://alvarogili.com.ar/contacto/">contactárme</a>
+        </div>
+      </footer>
+      <br>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+#contenido{
+	background-color: #EEE;	
+	box-shadow: inset 0 0 1em #38B349;		
+	min-height: 500px;
+	padding-top: 4em;
+	text-align: center;
+}
+
+#contenido a{	
+	text-decoration: none;
+}
+
+#contenido a:visited{	
+	text-decoration: none;
+}
+
+#empty{
+	max-width: 60%;
+	padding-left: 20%;
+	text-align: center;
+}
+
+.bonsai{
+	display: inline-block;	
+}
+
+.bonsai div{
+	background-color: #EEF4FF;
+	border-radius: 10px;
+	box-shadow: inset 0 0 1em #7298FF;
+	color: #021394;
+	font-family: 'Nunito', sans-serif;
+	height: 12em;
+	line-height: 1.3em;
+	margin: 5px 7px;
+	min-width: 10em;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	text-align: center;
+	transition: all 0.5s ease;
+	width: 13em;
+}
+
+.bonsai div:hover{
+	transform:scale(1.05);
+}
+
+.foto{
+	border-radius: 10px;
+	height: 70%;
+	margin-top: .5em;
+	max-height: 9em;	
+	width: 80%;	
+}
+
+.publicidad{
+	display: inline-block;	
+	height: 12em;
+	line-height: 1.3em;
+	margin: 5px;	
+	min-width: 10em;
+	padding-bottom: 10px;
+	padding-top: 13px;
+	text-align: center;
+	color: gray;
+	width: 13em;
+}

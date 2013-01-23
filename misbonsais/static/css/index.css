@@ -1,0 +1,138 @@
+body{	
+    background-color: #38B349;
+	color: #38B349;
+	margin: 0 auto; 
+    width: 1024px;
+}
+
+footer{
+	background-color: #EAEAEA;	
+	border-radius: 0px 0px 10px 10px;
+	padding: 10px;
+}
+
+footer div{
+	color: black;
+	display: inline-block;
+	font-size: .6em;
+	text-align: left;
+}
+
+header{
+	border-bottom: 1px solid #CCCCCC;
+	text-align: center;
+}
+
+input{
+	margin-left: 2em;
+}
+
+#cabecera{		
+	display: inline-block;
+	width: 65%;
+}
+
+#contacto{
+	text-align: right;
+	width: 50%;
+}
+
+#contenido{	
+	padding: 3%;
+	text-align: center;
+}	
+
+#desc_pagina{
+	display: inline-block;
+	padding-left: 3%;
+	text-align: justify;
+	width: 50%;
+}
+
+#error{
+	box-shadow: 5px 5px 3px gray;
+	border-radius: 10px;
+}
+
+#logo{
+	width: 70%;
+}
+
+#todo{
+	background-color: white;	
+	box-shadow: inset 0 0 1em #38B349;
+	padding: 15px;
+}
+
+#usuario{
+	display: inline-block;
+	font-size: .8em;	
+	padding-left: 10%;
+	text-align: right;
+	vertical-align: top;
+	width: 30%;
+}
+
+#usuario a{
+	font-size: .8em;
+}
+
+#usuario input{
+	width: 80%;
+}
+
+.article_left, .article_center, .article_rigth{
+	border: 1px solid #CCCCCC;
+	box-shadow: 5px 5px 5px gray;	
+	display: inline-block;	
+	margin: 15px;
+}
+
+.article_left img, .article_center img, .article_rigth img{	
+	border-radius: 5px;
+	margin: 10px;
+	width: 200px;
+}
+
+.boton{
+	color: #005509;
+	display: inline-block;
+	font-size: .85em;
+	padding: .3em 1em;
+	text-align: center;
+	width: 70px;
+}
+
+.foto{
+	max-height: 200px;
+}
+
+@media screen and (max-width: 1024px){
+	body{
+		width: 100%;
+	}
+
+	#cabecera{		
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 800px){
+		#desc_pagina{
+		width: 80%;
+	}
+
+	#desc_pagina, #usuario{
+		display: block;		
+	}
+
+	#usuario{
+		padding-left: 20%;
+		text-align: right;
+		width: 50%;
+	}
+
+	input{
+		width: 90%;
+	}
+}

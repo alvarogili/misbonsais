@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block titulo %}Editando perfil{% endblock %}
+{% block estilo_particular %}
+	<!-- calendario -->
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}js/jscal2.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}js/border-radius.css" />
+    <link id="skin-steel" title="Steel" type="text/css" rel="alternate stylesheet" href="{{ STATIC_URL }}js/steel/steel.css" />
+    <script src="{{ STATIC_URL }}js/jscal2.js"></script>
+    <script src="{{ STATIC_URL }}js/lang/es.js"></script>
+    <!---->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/general_style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/editar_usuario.css" />
+{% endblock %}    
+
+{% block menu_chico %}
+{% block menu %}
+  <div class='item_menu'>
+  	<a href="/usuario/">Todos mis bonsáis</a>
+  </div>  
+{% endblock %}
+{% endblock %}
+
+{% block contenido %}   
+  <section id="contenido">
+    <br>
+    <h2>Perfil del usuario</h2>
+    <section id="cuerpo">
+      <h3>Modificar datos</h3>
+      <form method="post">
+        {% csrf_token %}
+        <p>
+          <label for="id_first_name">Nombre:</label><br>
+          <input id="id_first_name" type="text" name="first_name" value="{{form.instance.first_name}}" maxlength="30" />
+        </p>
+        <p>
+          <label for="id_last_name">Apellido:</label><br>
+          <input id="id_last_name" type="text" name="last_name" value="{{form.instance.last_name}}" maxlength="30" />
+        </p>
+        <p>
+          <label for="id_email">Email:</label><br>
+          <input id="id_email" type="text" name="email" value="{{form.instance.email}}" maxlength="75" />
+        </p>
+        <button class="boton" onclick="submit()">
+          Guardar
+        </button>
+        <a href="/usuario/">Cancelar</a> 
+        <br>
+        <br>
+        <button>Cambiar contraseña</button>
+        <br>
+        <br> 
+      </section>  
+      <section id="estadisticas">
+        <br>
+        <br>
+        <br>
+        <h3>Datos de usuario</h3>
+        Nombre de usuario:  {{form.instance.username}}
+        <br>
+        <br>
+        Fecha de registro: {{form.instance.date_joined|date:"d/m/Y"}}
+        <br>
+        <br>
+        Cantidad de bonsais registrados: {{cant_bonsais}}
+        <br>
+      </section>
+  </section>
+{% endblock %}
