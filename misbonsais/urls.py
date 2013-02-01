@@ -18,5 +18,4 @@ urlpatterns = patterns('',
     url(r'^usuarios/envio_pass$', 'principal.views.envio_pass'),
     url(r'^usuario/editar/$', 'principal.views.editar_usuario'),
     url(r'^usuario/salir/$', 'principal.views.logout'),
-    url(r'^error/$', 'principal.views.error'),
 )

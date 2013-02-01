@@ -18,6 +18,9 @@
         function submitOnClick(formName){
             document.forms[formName].submit();
         }
+        window.onload= function(){         
+            document.getElementById("id_username").focus();
+        }
     </script>
   </head>
   <body>
@@ -33,6 +36,9 @@
       </header>    
       <section id="usuario">
           {% if formulario %}
+            <script type="text/javascript">
+                 
+            </script>
             <section id="login">            
               <h2>Acceso a usuarios</h2>    
               <form id="formulario" method="post">{% csrf_token %}
@@ -179,6 +185,11 @@
           </section>
           {% endif %}
           {% if form_email %}
+          <script>
+              window.onload= function(){
+                  document.getElementById("id_email").focus();
+              }
+          </script>
           <section id="envio_pass">
             <h2>Reenvío de contraseña</h2>    
             Ingrese el mail que registró anteriormente para que le enviemos su usuario y contraseña.

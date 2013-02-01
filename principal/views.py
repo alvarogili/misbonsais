@@ -255,8 +255,9 @@ def ingresar(request):
 		lista = []
 		for i in range(rangeVar):
 			if len(allBonsais[i].imagePath) > 0:
-				usuario = get_object_or_404(User, pk = allBonsais[i].usuario_id)
-				lista.append([allBonsais[i], usuario.first_name + ' ' + usuario.last_name])
+				bonsai = allBonsais[i]
+				usuario = get_object_or_404(User, pk = bonsai.usuario_id)
+				lista.append([bonsai, usuario.first_name + ' ' + usuario.last_name])
 
 		formulario = AuthenticationForm()
 	return render_to_response('index.html', {'formulario':formulario, 'lista':lista}, 
