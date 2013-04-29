@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="es">
+  <head>
+    <title>Mis Bonsáis - Guía</title>
+    <meta charset="utf-8">    
+    <link href="{{ STATIC_URL }}css/normalize.css" rel="stylesheet" /> 
+    <link href="{{ STATIC_URL }}css/index.css" rel="stylesheet" />     
+    <link href="{{ STATIC_URL }}js/prefixfree.min.js" rel="stylesheet" /> 
+    <link rel="shortcut icon" href="{{ STATIC_URL }}logo/icono.png" type="image/png">
+    <meta name="description" content="Página para la gestión de los trabajos realizados a tus bonsáis">
+    <meta name="viewport" content="width=device-width">    
+  </head>
+  <body>
+    <div id="todo">
+      <header>
+        <section id="cabecera">
+           <h1>
+            <a href="/" title="misbonsais.com.ar">
+              <img src="{{ STATIC_URL }}logo/logo2.png" id="logo">
+            </a>
+          </h1> 
+        </section>      
+      </header>    
+      <section id="guia">
+        <h2>Guía paso a paso para el usuario</h2>
+        <ol>
+          <li><a href="#creacion_de_usuario">Creación de usuario</a>
+            <ol type="a">
+              <li><a href="#como_crear_usuario">¿Cómo crear un usuario?</a></li>
+            </ol>
+          </li>
+          <li><a href="#restablecer_contr">Restablecer contraseña</a></li>
+          <li>
+            <a href="#plat_usuario">Plataforma de usuario</a>
+            <ol type="a">
+              <li><a href="#login">Ingreso al sistema</a></li>
+              <li><a href="#escritorio">Partes del escritorio del usuario</a></li>
+              <li>
+                <a href="#perfil">Editar perfil</a>
+                <ol type="i">
+                  <li><a href="#cambiar_perfil">Modificación de los datos de usuario</a></li>
+                  <li><a href="#cambiar_contr">Modificación de la contraseña</a></li>
+                </ol>                
+              </li>
+              <li><a href="#logout">Cerrar sesión</a></li>
+              <li><a href="#agregar_bonsai">Agregar un bonsái</a></li>
+              <li><a href="#detalles_bonsai">Ver los detalles de un bonsái</a></li>
+              <li>
+                <a href="#modif_bonsai">Modificar los detalles de un bonsái</a>
+                <ol type="i">
+                  <li><a href="#modif_bonsai_form">Formulario de modificación de un bonsái</a></li>
+                  <li><a href="#eliminar_bonsai">Eliminar el bonsái corriente</a></li>
+                </ol>
+              </li>
+              <li>
+                <a href="#labores">Administrar labores de un bonsái</a>
+                <ol type="i">
+                  <li><a href="#agregar_labor">Agregar una labor</a></li>
+                  <li><a href="#eliminar_labor">Eliminar una labor</a></li>
+                </ol>
+              </li>
+            </ol>
+          </li>
+          <li><a href="#sugerencias">Reporte de errores y sugerencias</a></li>
+        </ol>
+
+        <a href="/"><img style="transform:rotate(270deg);" src="{{STATIC_URL}}images/subir.png"> Volver a la página principal</a>
+        <br>
+
+        <h3>
+          <a id="creacion_de_usuario"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> 1- Creación de usuario
+        </h3>
+        Cómo habrás visto necesitas estar registrado en el sitio 
+        para comenzar a utilizarlo. Para ello deberás crearte tu usuario.<br>
+        
+        <h4>
+          <a id="como_crear_usuario"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> a- ¿Cómo crear un usuario?
+        </h4>
+        Para crear un usuario se necesita hacer click en el link <a href="usuarios/nuevo">Nuevo usuario</a>
+        debajo del formulario de ingreso a la página. este link te redireccionará a otra página en 
+        la cuál se podrá observar un formulario como el siguiente:<br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/nuevo_usuario.png" />
+            <figcaption>Formulario de registro de usuario</figcaption>
+          </figure>
+        </center>
+        <br>
+        En este formulario deberá completar todos los campos. Preste especial atención 
+        a los campos de ingreso de la contraseña ya que ésta deberá ser recordada para 
+        su posterior ingreso, como así también al campo "Email", en este se deberá ingresar un correo 
+        electrónico válido y al que se tenga acceso, ya que si fuese necesario recuperar 
+        la contraseña la misma será enviada a ésta dirección.<br>
+        Una vez completados los campos se deberá ingresar el código de verificación correcto, este 
+        permite determinar al sistema que es una persona que se está registrando.<br>
+        Completados todos estos datos presionar el botón "Registrar" para crear el usuario, si el 
+        usuario puede ser creado y no hay errores en el formulario automáticamente será redirigido 
+        a la página principal de su cuenta.<br>
+        
+        <h3>
+          <a id="restablecer_contr"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> 2- Restablecer contraseña
+        </h3>
+        Si por algún motivo la contraseña es olvidada el sistema permite regenerar una nueva. Para ello 
+        debajo del formulario de ingreso en la página principal exite un link con el nombre 
+        <a href="/usuarios/envio_pass">Olvido de usuario o contraseña</a>. Este link redireccionará a una 
+        página con un formalario como el siguiente:
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/rest_contr.png" />
+            <figcaption>Formulario para restablecer la contraseña</figcaption>
+          </figure>
+        </center>
+        <br>
+        Una vez ingresado el correo electrónico asociado al usuario del cuál se desea restablecer la contraseña se enviará un correo, en este se incluirá una contraseña generada al azar que luego podrá ser cambiada por el usuario en el panel de edición de perfil.<br>
+
+        <h3>
+          <a id="plat_usuario"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> 3- Plataforma de usuario
+        </h3>
+
+        <h4>
+          <a id="login"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> a- Ingreso al sistema
+        </h4>
+        Una vez creado el usuario podrá ingresar a su cuenta a través de la página principal, completando el siguiente formulario:
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/login.png" />
+            <figcaption>Formulario de ingreso al sistema</figcaption>
+          </figure>
+        </center>
+        <br>
+        Ingresando el nombre de usuario y la contraseña asociada se podrá ingresar a la página principal del usuario.
+
+        <h4>
+          <a id="escritorio"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> b- Partes del escritorio del usuario
+        </h4>
+        Cuando el usuario ingresa por primera vez al sistema, se encontrará con una pantalla como la siguiente:
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/escritorio.png" style="width:80%;" />
+            <figcaption>Pantalla principal del usuario</figcaption>
+          </figure>
+        </center>
+        <br>
+        Las partes de esta pantalla se describen a continuación:
+        <ul>
+          <li>Barra superior de menú</li>
+          <br>
+          Esta barra a la izquierda de la pantalla muestra el logo del sitio y a la derecha contiene dos partes, primero una lista de botones(que varía de acuerdo a la página en la que se esté) para realizar diferentes acciones y la segunda parte muestra el nombre del usuario, que al posicionar el mouse sobre este desplegará una menú con dos opciones, una para editar los datos del usuario y otra, para desconectarse del sistema.<br>
+          <br>
+          <li>Escritorio contenedor de los bonsáis</li>
+          <br>
+          Ésta es la parte principal de la página. Allí, en donde ahora se muestra la frase <b><i>"Bienvenido a su espacio. Para agregar su primer Bonsái presione el botón "Agregar bonsái" en la parte superior derecha de la página"</i></b> se irán mostrando los Bonsáis cargados por el usuario.<br>
+          <br>
+          <li>Pié de página</li>
+          Éste se encuentra, como su nombre lo indica, al final de la página. Está formado por tres componentes principales, <i>estadísticas del sitio</i>, que muestra algunas estadísticas generales; <i>la licencia de uso en la parte central</i>; y a la derecha, un link de <i>contacto</i> para informar cualquier fallo o hacer alguna sugerencia.
+        </ul>
+
+        <h4>
+          <a id="perfil"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> c- Editar perfil
+        </h4>
+        El usuario puede editar la información cargada cuando se registró en el sistema como así también, cambiar la contraseña con la que ingresa al sitio.<br>
+        Para acceder a esto, se deberá posicionar el puntero del mouse sobre el nombre de usuario en la esquina superior derecha de la pantalla y allí se desplegará un menú como el de la imágen siguiente, y allí hacer click en <i>"Editar perfil"</i>.
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/menu_usuario.png" />
+            <figcaption>Menú de usuario</figcaption>
+          </figure>
+        </center>
+        <br>
+        Echo el click se ingresará a la pantalla de modificación de datos de usuario, que se detalla a continuación.
+        
+        <h5>
+          <a id="cambiar_perfil"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> i- Modificación de los datos de usuario
+        </h5>
+
+        Los datos de un usuario que pueden ser modificados son los que muestra la imágen a continuación:
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/datos_usuario.png" style="width:50%;" />
+            <figcaption>Formulario de datos del usuario</figcaption>
+          </figure>
+        </center>
+        <br>
+        Cabe aclarar que el resto de los usuarios no ven todos los datos que coloque aquí, sólo pueden llegar a aparecer el nombre y apellido en la página principal cuando el sistema muestre uno de sus bonsáis. El Email es sólo usado para cuando usted olvide su contraseña y para que el equipo puede comunicarse con usted.<br>
+        Debajo de este formulario encontrará un botón con la leyenda "Cambiar contraseña", al hacer click será redireccionado a el formulario que permite hacer esta operación, que se detalla a continuación.
+        
+        <h5>
+          <a id="cambiar_contr"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> ii- Modificación de la contraseña
+        </h5>
+        El usuario registra por primera vez su contraseña cuando se registra en el sistema, pero el sistema provee la posibilidad de renovarla cuando desee. Para ello, desde el formulario de modificación de los datos de usuario, se debe hacer click en el botón "cambiar contraseña" y el sitio lo redireccionará al formulario mostrado a continuación:
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/contr_usuario.png" style="width:50%;" />
+            <figcaption>Formulario de modificación de la contraseña del usuario</figcaption>
+          </figure>
+        </center>
+        <br>
+        En este formulario se deberá ingresar la contraseña actual y dos veces la nueva contraseña. Esto se debe a que se verifica que la nueva contraseña ingresada no sea la no deseada. Una vez echo esto, se deberá presionar guardar y la nueva contraseña será guardada.        
+        
+        <h4>
+          <a id="logout"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> d- Cerrar sesión
+        </h4>
+
+        Para el cierre de sesión de usuario se debe posicionar sobre el nombre del usuario, en la esquina superior-derecha, allí se desplegará un menú el cual se muestra en la imágen siguiente. Allí hacer click en "Cerrar sesión".
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/menu_usuario.png" />
+            <figcaption>Cerrar sesión</figcaption>
+          </figure>
+        </center>
+        <br>
+        Cabe aclarar que si esta operación no se hiciese, la sesión caducará automáticamente después de los 30 minutos.
+        
+        <h4>
+          <a id="agregar_bonsai"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> e- Agregar un bonsái
+        </h4>
+        
+        <h4>
+          <a id="detalles_bonsai"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> f- Ver los detalles de un bonsái
+        </h4>
+        
+        <h4>
+          <a id="modif_bonsai"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> g- Modificar los detalles de un bonsái
+        </h4>
+        
+        <h5>
+          <a id="modif_bonsai_form"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> i- Formulario de modificación de un bonsái
+        </h5>
+        
+        <h5>
+          <a id="eliminar_bonsai"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> ii- Eliminar el bonsái corriente
+        </h5>
+        
+        <h4>
+          <a id="labores"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> h- Administrar labores de un bonsái
+        </h4>
+        
+        <h5>
+          <a id="agregar_labor"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> i- Agregar una labor
+        </h5>
+        
+        <h5>
+          <a id="eliminar_labor"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> ii- Eliminar una labor
+        </h5>        
+        
+        <h3>
+          <a id="sugerencias"></a>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> 4- Reporte de errores y sugerencias
+        </h3>
+
+      </section>       
+    </section>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block titulo %}Mis bonsáis{% endblock %}
+{% block titulo %}Mis bonsáis: {{usuario.first_name}} {{usuario.last_name}}{% endblock %}
 {% block estilo_particular %}
 	<link href="{{ STATIC_URL }}css/bonsais_style.css" rel="stylesheet" /> 
 {% endblock %}

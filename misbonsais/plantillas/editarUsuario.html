@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block titulo %}Editando perfil{% endblock %}
 {% block estilo_particular %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/general_style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/editar_usuario.css" />
 	<!-- calendario -->
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}js/jscal2.css" />
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}js/border-radius.css" />
@@ -8,9 +10,10 @@
     <script src="{{ STATIC_URL }}js/jscal2.js"></script>
     <script src="{{ STATIC_URL }}js/lang/es.js"></script>
     <!---->
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/general_style.css" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/editar_usuario.css" />
-{% endblock %}    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
+{% endblock %}   
+
+{% load i18n %} 
 
 {% block menu_chico %}
 {% block menu %}
@@ -24,45 +27,91 @@
   <section id="contenido">
     <br>
     <h2>Perfil del usuario</h2>
-    <section id="cuerpo">
-      <h3>Modificar datos</h3>
-      <form method="post">
-        {% csrf_token %}
-        <p>
-          <label for="id_first_name">Nombre:</label><br>
-          <input id="id_first_name" type="text" name="first_name" value="{{form.instance.first_name}}" maxlength="30" />
-        </p>
-        <p>
-          <label for="id_last_name">Apellido:</label><br>
-          <input id="id_last_name" type="text" name="last_name" value="{{form.instance.last_name}}" maxlength="30" />
-        </p>
-        <p>
-          <label for="id_email">Email:</label><br>
-          <input id="id_email" type="text" name="email" value="{{form.instance.email}}" maxlength="75" />
-        </p>
-        <button class="boton" onclick="submit()">
-          Guardar
-        </button>
-        <a href="/usuario/">Cancelar</a> 
+    {% if form %}
+      <section id="cuerpo">
+        <h3>Modificar datos</h3>
+        <form method="post">
+          {% csrf_token %}
+          {% if error_info %}
+            <p class="error">
+              ¡Todos los campos deben estar completos!
+            </p>
+          {% endif %}
+          <p>
+            <label for="id_first_name">Nombre:</label><br>
+            <input id="id_first_name" type="text" name="first_name" value="{{form.instance.first_name}}" maxlength="30" />
+          </p>
+          <p>
+            <label for="id_last_name">Apellido:</label><br>
+            <input id="id_last_name" type="text" name="last_name" value="{{form.instance.last_name}}" maxlength="30" />
+          </p>
+          <p>
+            <label for="id_email">Email:</label><br>
+            <input id="id_email" type="text" name="email" value="{{form.instance.email}}" maxlength="75" />
+          </p>
+          <button class="boton" onclick="submit()">
+            Guardar
+          </button>
+        </form>
         <br>
+        <button onClick="location.href='/usuario/cambiar_contr/'">Cambiar contraseña</button>
         <br>
-        <button>Cambiar contraseña</button>
-        <br>
-        <br> 
-      </section>  
+      </section> 
       <section id="estadisticas">
-        <br>
-        <br>
-        <br>
         <h3>Datos de usuario</h3>
         Nombre de usuario:  {{form.instance.username}}
         <br>
-        <br>
         Fecha de registro: {{form.instance.date_joined|date:"d/m/Y"}}
-        <br>
         <br>
         Cantidad de bonsais registrados: {{cant_bonsais}}
         <br>
       </section>
+    {% endif %}                     
+    {% if form_pass %} 
+      <section id="cambiar_cont">          
+          <h3>Cambiar contraseña</h3>
+          <ul class="errorlist">
+            {% if form_pass.errors.old_password %}
+              <li>Contraseña actual:</li>
+              {{form_pass.errors.old_password}}
+            {% endif %}
+            {% if form_pass.errors.new_password1 %}
+              <li>Nueva contraseña:</li>
+              {{form_pass.errors.new_password1}}
+            {% endif %}
+            {% if form_pass.errors.new_password2 %}
+              <li>Repita la nueva contraseña:</li>
+              {{form_pass.errors.new_password2}}
+            {% endif %}
+          </ul>
+          <script type="text/javascript">
+            function verificarCampos(){
+              return false;
+            }
+          </script>
+          <form method="post">
+            {% csrf_token %}
+            <p>
+              <label for="id_old_password">Contraseña actual:</label> <br>
+              <input type="password" name="old_password" id="id_old_password" />
+            </p>
+            <p>
+              <label for="id_new_password1">Nueva contraseña:</label> <br>
+              <input type="password" name="new_password1" id="id_new_password1" />
+            </p>
+            <p>
+              <label for="id_new_password2">Repita la nueva contraseña:</label> <br>
+              <input type="password" name="new_password2" id="id_new_password2" />
+            </p>
+            <button class="boton" onclick="submit()">
+                Guardar
+            </button>
+          </form>
+          <br>
+          <button onClick="location.href='/usuario/editar/'">Editar información de usuario</button>
+      </section>
+    {% endif %}    
+    <br>
+    <br>
   </section>
 {% endblock %}

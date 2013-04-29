@@ -6,6 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$','principal.views.ingresar'),
+    url(r'^guia/$','principal.views.guia'),    
     url(r'^bonsai/(?P<id_bonsai>\d+)$','principal.views.detalle_bonsai'),
     url(r'^media/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.MEDIA_ROOT,}),
     url(r'^usuario/bonsai/nuevo/$','principal.views.nuevo_bonsai'),
@@ -17,5 +18,6 @@ urlpatterns = patterns('',
     url(r'^usuarios/nuevo$', 'principal.views.nuevo_usuario'),
     url(r'^usuarios/envio_pass$', 'principal.views.envio_pass'),
     url(r'^usuario/editar/$', 'principal.views.editar_usuario'),
+    url(r'^usuario/cambiar_contr/$', 'principal.views.cambiar_contr'),
     url(r'^usuario/salir/$', 'principal.views.logout'),
 )

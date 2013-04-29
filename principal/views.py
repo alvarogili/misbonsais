@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.template import RequestContext
 from principal.forms import BonsaiForm, LaborForm, RegistrationForm, sendPassword, UserEditForm
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -13,13 +13,14 @@ from django.core.mail import send_mail
 from random import choice
 import datetime
 import string
+from django.utils.translation import ugettext
 
 def get_id_usuario(request):
 	'''
 	returns the user session
 	'''
 	id_usuario = request.session['member_id']	
-	request.session.set_expiry(1800)#30 minutos
+	request.session.set_expiry(3600)#30 minutos
 	return id_usuario
 
 def get_statistics():
@@ -224,6 +225,10 @@ def nuevo_usuario(request):
 		return render_to_response('index.html', {'form_reg':form_reg}, 
 		 context_instance=RequestContext(request))
 
+#mostrar guia
+def guia(request):
+	return render_to_response('guia.html', context_instance=RequestContext(request))
+
 #login de usuario
 def ingresar(request):
 	if request.method == 'POST':
@@ -302,6 +307,7 @@ def logout(request):
         pass
     return HttpResponseRedirect('/')
 
+#permite editar la info del usuario
 @login_required(login_url='/')
 def editar_usuario(request):
 	try:
@@ -315,11 +321,44 @@ def editar_usuario(request):
 	if request.method == 'POST':
 		form = UserEditForm(request.POST, instance=usuario)
 		if form.is_valid():
-			form.save()
-			return HttpResponseRedirect('/usuario/')
+			form.save()		
+			return HttpResponseRedirect('/usuario/editar/')
+		else:
+			form = UserEditForm(instance=usuario)	   	
+	   		return render_to_response('editarUsuario.html',
+	                             {'form':form, 'error_info':'True', 'usuario':usuario, 'statistics':get_statistics(), 
+	                             'cant_bonsais': cant_bonsais},
+	                             context_instance=RequestContext(request))
 	else:
-	   	form = UserEditForm(instance=usuario)
+	   	form = UserEditForm(instance=usuario)	   	
 	   	return render_to_response('editarUsuario.html',
 	                             {'form':form, 'usuario':usuario, 'statistics':get_statistics(), 
+	                             'cant_bonsais': cant_bonsais},
+	                             context_instance=RequestContext(request))
+
+#permite cambiar la contraseña
+@login_required(login_url='/')
+def cambiar_contr(request):
+	try:
+		id_usuario = get_id_usuario(request)
+	except:
+		return render_to_response('error.html', {}, 
+			context_instance=RequestContext(request))	
+	usuario = get_object_or_404(User, pk = id_usuario)
+	cant_bonsais = Bonsai.objects.filter(usuario_id=id_usuario).count()
+	if request.method == 'POST':
+		form_pass = PasswordChangeForm(request.user, data=request.POST)
+		if form_pass.is_valid():
+			form_pass.save()
+			return HttpResponseRedirect('/usuario/cambiar_contr/')			
+		else:
+			return render_to_response('editarUsuario.html',
+	                             {'form_pass':form_pass, 'usuario':usuario, 'statistics':get_statistics(), 
+	                             'cant_bonsais': cant_bonsais},
+	                             context_instance=RequestContext(request))
+	else:
+	   	form_pass = PasswordChangeForm(request.user)	   	
+	   	return render_to_response('editarUsuario.html',
+	                             {'form_pass':form_pass, 'usuario':usuario, 'statistics':get_statistics(), 
 	                             'cant_bonsais': cant_bonsais},
 	                             context_instance=RequestContext(request))

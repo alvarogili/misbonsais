@@ -5,6 +5,12 @@ body{
     width: 1024px;
 }
 
+figcaption{
+	color: #585858;
+	font-size: .8em;
+	padding-top: 5px;
+}
+
 footer{
 	background-color: #EAEAEA;	
 	border-radius: 0px 0px 10px 10px;
@@ -52,6 +58,13 @@ input{
 #error{
 	box-shadow: 5px 5px 3px gray;
 	border-radius: 10px;
+}
+
+#guia{
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: left;
+	color: #585858;
 }
 
 #logo{
@@ -105,6 +118,10 @@ input{
 
 .foto{
 	max-height: 200px;
+}
+
+.img_guia{
+	box-shadow: 2px 2px 5px 1px;	
 }
 
 @media screen and (max-width: 1024px){
