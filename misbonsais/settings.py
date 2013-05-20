@@ -15,27 +15,27 @@ MANAGERS = ADMINS
 
 #SQLite
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'misbonsais.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+       'NAME': 'misbonsais.db',                      # Or path to database file if using sqlite3.
+       'USER': '',                      # Not used with sqlite3.
+       'PASSWORD': '',                  # Not used with sqlite3.
+       'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+       'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+   }
 }
 
-#MySQL
+# #MySQL
 # DATABASES = {
-    # 'default': {
-        # 'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        # 'NAME': 'misbonsais',                      # Or path to database file if using sqlite3.
-        # 'USER': 'root',                      # Not used with sqlite3.
-        # 'PASSWORD': 'root',                  # Not used with sqlite3.
-        # 'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        # 'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    # }
-# }
+#      'default': {
+#          'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+#          'NAME': 'alvarogili$misbonsais',                      # Or path to database file if using sqlite3.
+#          'USER': 'alvarogili',                      # Not used with sqlite3.
+#          'PASSWORD': 'tarde050805',                  # Not used with sqlite3.
+#          'HOST': 'mysql.server',                      # Set to empty string for localhost. Not used with sqlite3.
+#          'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
+#     }
+#  }
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -82,11 +82,12 @@ STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+STATIC_URL = os.path.join('/home/alvarogili/misbonsais/misbonsais/','/static/')
 
 # Additional locations of static files
 STATICFILES_DIRS = (
     os.path.join(RUTA_PROYECTO,'static'),
+    os.path.join('/home/alvarogili/misbonsais/misbonsais/','static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -135,7 +136,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'principal',
+    'principal',    
 )
 
 # A sample logging configuration. The only tangible logging
@@ -145,16 +146,10 @@ INSTALLED_APPS = (
 # more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
+    'disable_existing_loggers': False,    
     'handlers': {
         'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
+            'level': 'ERROR',            
             'class': 'django.utils.log.AdminEmailHandler'
         }
     },

@@ -164,7 +164,8 @@
                   <div class="errmsg" style="color:red;">
                     {% if form_reg.errors.username %}
                       <b>El usuario ya existe en el sistema</b>
-                    {% elif form_reg.recaptcha.errors %}
+                    {% endif %}
+                    {% if form_reg.recaptcha.errors %}
                       <b>Captcha inválido</b>
                     {% else %}
                       <b>Todos los campos son obligatorios</b>
@@ -234,9 +235,9 @@
             <br>
             <br>
             <div id="viewer" class="js-disabled">
-              {% for item in lista %}
-                <a class="wrapper" href="#" title="{{item.0.common_name}} de {{item.1}}"><img class="foto" src="{{ item.0.imagePath }}"></a>
-              {% endfor %}
+            {% for item in lista %}
+              <a class="wrapper" href="#" title="{{item.0.common_name}} de {{item.1}}"><img class="foto" src="{{ item.0.imagePath }}"></a>
+            {% endfor %}
             </div>
           </div>
         </div>
@@ -248,7 +249,7 @@
         $("#viewer").removeClass("js-disabled");
       
         //create new container for images
-        $("<div>").attr("id", "container").css({ position:"absolute"}).width($(".wrapper").length * 170).height(170).appendTo("div#viewer");
+        $("<div>").attr("id", "container").css({ position:"absolute"}).width($(".wrapper").length * 250).height(170).appendTo("div#viewer");
           
         //add images to container
         $(".wrapper").each(function() {

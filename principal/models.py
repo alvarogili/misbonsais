@@ -44,8 +44,11 @@ class Labor(models.Model):
 		(4, 'Abonado'),
 		(5, 'Afección/Enfermedad'),
 		(6, 'Tratamiento de enfermedad'),
-		(7, 'Enraizado sobre piedra'),
+		(7, 'Enraizado sobre piedra'),		
 		(8, 'Otra'),
+		(9, 'Defoliado'),
+		(10, 'Cambio de mantillo'),
+		(11, 'Alambrado')		
 	)
 	task_type = models.IntegerField(choices=task_type_of_labor)
 

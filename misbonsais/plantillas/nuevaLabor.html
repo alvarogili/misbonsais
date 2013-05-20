@@ -64,15 +64,15 @@
                       Calendar.setup({
                                      fdow: 0,   
                                      inputField: "id_date",
-                                           trigger: "calendar-trigger", 
-                                     dateFormat: "%m/%d/%Y",
+                                     trigger: "calendar-trigger", 
+                                     dateFormat: "%d/%m/%Y",
                                      onSelect : function () {
                                             this.hide();
-                            var date = this.selection.get();
-                            date = Calendar.intToDate(date);
-                                  date = Calendar.printDate(date, "%d/%m/%Y");
-                            document.formulario.fecha.value = date;
-                          }
+                                            var date = this.selection.get();
+                                            date = Calendar.intToDate(date);
+                                            date = Calendar.printDate(date, "%d/%m/%Y");
+                                            document.formulario.fecha.value = date;
+                                     }
                                    });
                      cal.fdow = 0;
                      cal.redraw();

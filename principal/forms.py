@@ -4,7 +4,7 @@ from django import forms
 from principal.models import Bonsai, Labor, EMail
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from recaptchawidget.fields import ReCaptchaField 
+from fields import ReCaptchaField 
 
 class BonsaiForm(ModelForm):
     class Meta:
