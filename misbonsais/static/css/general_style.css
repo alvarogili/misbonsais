@@ -228,7 +228,7 @@ h2, h3, #editar_perfil, #menu_usuario, #opcionesUsuario, #contenido, #menu_verti
     text-decoration: none;	
 }
 
-@media screen and (max-width: 780px){
+@media screen and (max-width: 860px){
 	header{
 		background-color: #303030;
 		position: relative;
