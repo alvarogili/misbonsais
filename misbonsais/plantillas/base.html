@@ -27,11 +27,17 @@
         <div id="menu_vertical">
           <button id="boton_menu">Menú</button>
           <div id="menu_chico">
-            {% block menu_chico %}{% endblock %}
+            {% block menu_chico %}{% endblock %}  
+            <div class='item_menu'>
+                <a href="/guia/" target="_blank">Guía del usuario</a>
+            </div>          
           </div>
         </div>
         <div id="menu_grande">
-            {% block menu %}{% endblock %}                 
+            {% block menu %}{% endblock %}            
+            <div class='item_menu'>
+                <a href="/guia/" target="_blank" title="Guía del usuario" ><b>?</b></a>
+            </div>
         </div>
         <ul id="menu_usuario">
             <li>
@@ -48,8 +54,8 @@
                   </div>
                 </li>
               </ul>              
-            </li>
-        </ul> 
+            </li>            
+        </ul>        
     	</header>         
       {% block contenido %}{% endblock %}
       <aside>

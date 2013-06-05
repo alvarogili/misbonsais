@@ -1,4 +1,4 @@
 User-agent: *
 
-Disallow:/google\ apps/ 
+Disallow:/recaptcha/ 
 Disallow:/recaptchawidget/ 

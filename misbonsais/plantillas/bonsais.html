@@ -19,25 +19,68 @@
 
 
 {% block contenido %}
-	<section id="contenido">			
-		<br>			
-		<h2>Mis Bonsáis</h2>			
-		<br>		
+	<script type="text/javascript">
+		function getText( obj ) {
+		    return obj.textContent ? obj.textContent : obj.innerText;
+		}
+		//filtra los bonsais que se están viendo
+		function filtrar() {
+			//keycode = (evt.keyCode==0) ? evt.which : evt.keyCode;
+			text = document.getElementById("input_buscar").value; //obj.value + String.fromCharCode(keycode); 
+			bonsais = $('.bonsai');	
+			i = 0;
+			var bonsai;
+			while(bonsai = bonsais[i++]){									  
+				var div_bonsai_id = bonsai.children[0];
+				
+				div_bonsai_id = document.getElementById(div_bonsai_id.id);
+				//obtengo el "common_name"
+				common_name = getText(div_bonsai_id.childNodes[1]).toLowerCase();
+				//verifico si tiene byname
+				//if(getText(div_bonsai_id.childNodes[3]))
+				byname = getText(div_bonsai_id.childNodes[3]);
+				if((byname != undefined && 
+					byname.toLowerCase().contains(text)) || 
+					common_name.contains(text)){
+					//lo muestro
+					document.getElementById(div_bonsai_id.id).style.display ='inline-block';
+				}else{
+					//lo oculto
+					document.getElementById(div_bonsai_id.id).style.display ='none';
+				}
+			};
+		}
+	</script>
+	<section id="contenido">	
+		<div id="titulo">
+			<b>Mis Bonsáis</b>
+		</div>
+		<div id="buscar">		
+			Filtrar por nombre o apodo: <input id="input_buscar" autofocus onkeyup="filtrar()">
+			<script>document.getElementById("input_buscar").value = "";</script>
+		</div>					
 		{% for bonsai in datos %}	
 			<a href="/bonsai/{{bonsai.id}}">
-				<article class="bonsai">					
-					<div>
-						{{bonsai.common_name}}
-						<br>
-						{{bonsai.byname}}
-						<br>						
+				<section class="bonsai">					
+					<div id="{{bonsai.id}}">
+						<article class="common_name">
+							{{bonsai.common_name}}
+						</article>
+						{% if bonsai.byname %}
+							<article class="byname">
+								{{bonsai.byname}}
+							</article>	
+						{% else %}
+			             	<br>
+			           	{% endif %}					
+
 						{% if bonsai.imagePath %}
 			           		<img src="{{bonsai.imagePath}}" class="foto">
 			           	{% else %}
 			             	<img src="{{STATIC_URL}}no-imagen.jpg" class="foto">
 			           	{% endif %}
 		           	</div>		
-				</article>				
+				</section>				
 			</a>
 			{% if forloop.counter|divisibleby:5 %}
 				<article class="publicidad">

@@ -25,7 +25,7 @@ DATABASES = {
    }
 }
 
-# #MySQL
+#MySQL
 # DATABASES = {
 #      'default': {
 #          'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -162,9 +162,11 @@ LOGGING = {
     }
 }
 
-EMAIL_HOST = "localhost"
-DEFAULT_FROM_EMAIL = "no-responder@misbonsais.com.ar"
-EMAIL_PORT = 25
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'alvarogili@gmail.com'
+EMAIL_HOST_PASSWORD = 'tarde271011'
+EMAIL_PORT = 587
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 #re-captcha

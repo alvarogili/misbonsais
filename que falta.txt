@@ -1,8 +1,11 @@
 que falta?
 
+En la página de todos los bonsais cuando haces scroll las publicidades quedan sobre el menú
+
 -búsqueda de bonsáis en página general
--crear tutorial
 -eliminar usuario
+-repositorio para las fotos -> https://code.djangoproject.com/wiki/FlickrIntegration
 
 A futuro:
 -ver de agregar labores a multiples bonsáis
+-fichas(ver si vale la pena)

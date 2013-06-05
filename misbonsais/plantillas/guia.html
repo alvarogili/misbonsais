@@ -49,13 +49,8 @@
               <li><a href="#logout">Cerrar sesión</a></li>
               <li><a href="#agregar_bonsai">Agregar un bonsái</a></li>
               <li><a href="#detalles_bonsai">Ver los detalles de un bonsái</a></li>
-              <li>
-                <a href="#modif_bonsai">Modificar los detalles de un bonsái</a>
-                <ol type="i">
-                  <li><a href="#modif_bonsai_form">Formulario de modificación de un bonsái</a></li>
-                  <li><a href="#eliminar_bonsai">Eliminar el bonsái corriente</a></li>
-                </ol>
-              </li>
+              <li><a href="#modif_bonsai">Modificar los detalles de un bonsái</a></li>
+              <li><a href="#eliminar_bonsai">Eliminar el bonsái corriente</a></li>
               <li>
                 <a href="#labores">Administrar labores de un bonsái</a>
                 <ol type="i">
@@ -259,9 +254,9 @@
           <li>Nombre vulgar</li>
           Es el nombre común de la especie que se le da en la región, por ejemplo Ombú o Pino Negro. Este campo es obligatorio.
           <li>Nombre botánico</li>
-          Según <a href="http://es.wikipedia.org/wiki/Nombre_bot%C3%A1nico">Wikipedia</a>, en botánica, el nombre botánico es el nombre asignado a cada planta. Este es dado de acuerdo a el "Código Internacional de Nomenclatura Botánica". Este campo es opcional.
+          Según <a href="http://es.wikipedia.org/wiki/Nombre_bot%C3%A1nico">Wikipedia</a>, en botánica, el nombre botánico es el nombre asignado a cada planta. Este es dado de acuerdo a el "Código Internacional de Nomenclatura Botánica", por ejemplo Phytolacca dioica o Pinus halepensis. Este campo es opcional.
           <li>Foto</li>
-          Esta es la foto del Bonsái. Cabe aclarar que para agregar una foto al Bonsái no es posible hacerlo subiéndola al sitio, se deberá en cambio, subirla por ejemplo a un álbum en Facebook o en algún lugar en el cual se puedan almacenar fotos. Luego de esto, se deberá copiar la dirección de esta imagen y pegarla en este campo. A continuación se detalla como copiar la dirección de la imagen: Para copiar la dirección de la imagen se deberá abrir la misma y sobre esta, se deberá hacer click con el botón derecho y elegir la opción "Copiar ruta de la imagen", "copiar URL de la imagen", "copiar dirección de la imágen", etc. Las diferentes opciones dadas son dependiendo del navegador que se esté utilizando. Luego se deberá hacer click con el botón derecho sobre el campo <b>Foto</b> y seleccionar "pegar". Echo esto se podrá visualizar al costado derecho la vista previa de la foto elegida. Este campo es opcional
+          Esta es la foto del Bonsái. Cabe aclarar que para agregar una foto al Bonsái no es posible hacerlo subiéndola al sitio, se deberá en cambio, subirla por ejemplo a un álbum en Facebook o en algún lugar en el cual se puedan almacenar fotos. Luego de esto, se deberá copiar la dirección de esta imagen y pegarla en este campo. A continuación se detalla como copiar la dirección de la imagen: Para copiar la dirección de la imagen se deberá abrir la misma y sobre esta, se deberá hacer click con el botón derecho y elegir la opción <i>"Copiar ruta de la imagen"</i>, <i>"copiar URL de la imagen"</i>, <i>"copiar dirección de la imágen"</i>, etc. Las diferentes opciones dadas son dependiendo del navegador que se esté utilizando. Luego se deberá hacer click con el botón derecho sobre el campo <b>Foto</b> y seleccionar <i>"pegar"</i>. Echo esto se podrá visualizar al costado derecho la vista previa de la foto elegida. Este campo es opcional
           <li>Apodo</li>
           Este es un campo muy particular, se agregó ya que muchas personas le ponen nombres o apodos a sus amados Bonsáis, entonces aquí podrán colocarlo. Este campo es opcional.
           <li>Fecha de nacimiento/adquisición(*)</li>
@@ -269,46 +264,127 @@
           <li>Estilo</li>
           El estilo es la forma que se le dá al árbol. Este campo es opcional.
         </ul>
-        Una vez completados los campos, se deberá presionar el botón "Guardar" y el nuevo Bonsái quedará almacenado.
+        Una vez completados los campos, se deberá presionar el botón "Guardar" y el nuevo Bonsái quedará almacenado y lo verá cargado en su página principal como se muestra a continuación:
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/bonsai_cargado.png" style="width:80%;" />
+            <figcaption>Primer Bonsái del usuario</figcaption>
+          </figure>
+        </center>
+        <br>       
+
         <h4>
           <a id="detalles_bonsai"></a>
           <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> f- Ver los detalles de un bonsái
         </h4>
-        
+        Una vez almacenado el Bonsái, se podrán ver sus detalles haciendo click sobre en cuadrado que lo representa, como se muestra en la figura anterior. Echo esto, se accederá a una página como la que se muestra a continuación:
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/detalle_bonsai.png" style="width:80%;" />
+            <figcaption>Detalles del Bonsái</figcaption>
+          </figure>
+        </center>
+        <br>
+         Esta pantalla se puede observar que tiene dos partes importantes mas allá del menú principal, la superior muestra la foto del bonsái y los datos del mismo. La parte inferior, que actualmente contiene la leyenda <i>"Aún no se han realizado labores sobre este bonsái."</i> es en donde se podrán observar las labores realizadas sobre el bonsái, ordenadas cronológicamente de manera descendente. Como agregar labores se verá en la sección <i>"<a href="#labores">Administrar labores de un bonsái</a>"</i>
+
         <h4>
           <a id="modif_bonsai"></a>
           <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> g- Modificar los detalles de un bonsái
         </h4>
+        Para modificar los datos de un bonsái se deberá hacer click en el botón del menú superior con la leyenda "Modificar datos", esto mostrará a una página como la siguiente:
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/modificar_bonsai.png" style="width:80%;" />
+            <figcaption>Modificar el Bonsái</figcaption>
+          </figure>
+        </center>
+        <br>
+        En esta pantalla se pueden encontrar dos funcionalidades importantes, una a la izquierda similar al formulario para agregar un bonsái, que permite editar los datos previamente cargados, cambiar nombre, foto, etc. Y la otra a la derecha que es para eliminar el bonsái. Esta última funcionalidad se detalla en la sección siguiente.
         
-        <h5>
-          <a id="modif_bonsai_form"></a>
-          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> i- Formulario de modificación de un bonsái
-        </h5>
-        
-        <h5>
+        <h4>
           <a id="eliminar_bonsai"></a>
-          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> ii- Eliminar el bonsái corriente
-        </h5>
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> h- Eliminar el bonsái corriente
+        </h4>
+        Para eliminar el bonsái se debe ingresar al formulario de edición del mismo, como explica la sección <i>"<a href="#modif_bonsai">Modificar los detalles de un bonsái</a>"</i>. Una vez allí podremos observar un botón el la esquina inferior derecha que dice eliminar. Haciendo click en este se solicitará confirmación y luego se eliminará el bonsái completo. Cabe aclarar que una vez echo esto, se borrará el bonsái junto a todas sus labores y no se podrá volver atrás.
         
         <h4>
           <a id="labores"></a>
-          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> h- Administrar labores de un bonsái
+          <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> i- Administrar labores de un bonsái
         </h4>
+        Para administrar las labores de un bonsái será necesario hacer click en el botón <i>"Administrar labores"</i> que se encuentra en el menú de la página del mismo. Echo esto, se mostrará una página como la siguiente:
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/labores_bonsai.png" style="width:80%;" />
+            <figcaption>Página de labores del Bonsái</figcaption>
+          </figure>
+        </center>
+        <br>
+        En las secciones siguientes veremos como agregar y eliminar labores a un bonsái.
         
         <h5>
           <a id="agregar_labor"></a>
           <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> i- Agregar una labor
         </h5>
+        Para agregar una labor, se debe completar el formulario mostrado en la sección anterior, el formulario contiene los siguientes campos:
+        <ul>
+          <li>Fecha</li>
+          Esta es la fecha en la que se aplicó la labor. Este campo es obligatorio.
+          <li>Tipo de tarea</li>
+          Es la tarea que se hizo ese día. En este se pueden elegir algunos ya pre-cargados, o bien poner la opción <i>"Otros"</i> y aclarar en los comentarios. Este campo es obligatorio.
+          <li>Descripción</li>
+          Aquí se puede colocar un comentario adicional a la tarea. Este campo es opcional.
+        </ul>
+        Una vez completados los campos y presionado el botón <i>Guardar</i> se podrá observar una pantalla como la siguiente:
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/labor_cargado.png" style="width:80%;" />
+            <figcaption>Página de labores del Bonsái</figcaption>
+          </figure>
+        </center>
+        <br>
+        Como se observa, debajo del formulario de agregado de labores se muestra una lista con los labores cargados.
+        Y en la página principal del bonsái, como muestra la imagen siguiente, también se observan los labores aplicados a este en una lista descendiente en el tiempo, es decir, la última labor se encuentra en primer lugar:
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/principal_con_labor.png" style="width:80%;" />
+            <figcaption>Página principal del Bonsái con labores cargados</figcaption>
+          </figure>
+        </center>
+        <br>
         
         <h5>
           <a id="eliminar_labor"></a>
           <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> ii- Eliminar una labor
-        </h5>        
-        
+        </h5>
+        Para eliminar una labor, es necesario dirigirse a la página para administrar los labores. Allí, en la grilla de los labores ya cargados se podrán eliminar estos. Para hacerlo, habrá que dirigirse al labor a borrar y en la cuarta columna se observará una cruz roja como la de la imagen siguiente:
+        <br>
+        <br>
+        <center>
+          <figure>
+            <img class="img_guia" src="{{STATIC_URL}}images/guia/labor_a_borrar.png" style="width:80%;" />
+            <figcaption>Labor a borrar</figcaption>
+          </figure>
+        </center>
+        <br>
+        Haciendo click en la cruz se solicitará confirmación y luego se eliminará este. Cabe aclarar que una vez echo esto, se borrará la labor y no se podrá volver atrás.
+
         <h3>
           <a id="sugerencias"></a>
           <a title="subir" href="#"><img src="{{STATIC_URL}}images/subir.png"></a> 4- Reporte de errores y sugerencias
         </h3>
+        Como este es un sitio nuevo, puede que contenga errores y obviamente, cosas que falten y que sean muy necesarias para el bonsaista. Entonces se necesita una forma de comunicación con el creador del sitio, para ello, en la esquina inferior derecha de todas las páginas van a encontrar un link que lleva a un formulario de contacto. Espero sus mensajes, así entre todos, llegaremos a hacer un sitio de gran utilidad.
 
       </section>       
     </section>

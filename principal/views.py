@@ -53,7 +53,7 @@ def detalle_bonsai(request, id_bonsai):
 			context_instance=RequestContext(request))
 	
 	dato = get_object_or_404(Bonsai, pk = id_bonsai)
-	usuario = get_object_or_404(User, pk = id_usuario)
+	usuario = get_object_or_404(User, pk = dato.usuario.id)
 	#verifico que sea el usuario del elemento
 	if not usuario.id == id_usuario:
 		return HttpResponseRedirect('/usuario/')
@@ -180,9 +180,8 @@ def borrar_bonsai(request, id_bonsai):
 		return render_to_response('error.html', {}, 
 			context_instance=RequestContext(request))
 	bonsai = get_object_or_404(Bonsai, pk = id_bonsai)
-	id_usuario_in_bonsai = bonsai.usuario.id
 	#verifico que sea el usuario del elemento
-	if id_usuario_in_bonsai == id_usuario:
+	if bonsai.usuario.id == id_usuario:
 		bonsai.delete()
 	return HttpResponseRedirect('/usuario/')
 
